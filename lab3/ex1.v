@@ -1,5 +1,5 @@
 //f(A, B, C, D)= πM(2,6,8,9,10,11,14)
-
+//nand gates
 
 module q1(a, b, c, d, f);
     input a, b, c, d;
