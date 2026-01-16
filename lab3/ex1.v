@@ -6,6 +6,7 @@ module q1(a, b, c, d, f);
     output f;
     
     wire g0, g1, g2, g3, g4, g5, g6, g7, g8, g9;
+    wire n3, n5, n7, n9; // inverse for product terms 
     wire t0, t1; //cascading nand gates for f
 
     nand (g0, a, a); // a'
@@ -22,13 +23,20 @@ module q1(a, b, c, d, f);
     nand (g8, g1, b);
     nand (g9, g8, g8); // c'b
 
-    // nand (f, g3, g5, g7, g9);
+    //nand (f, g3, g5, g7, g9);
     // this doesnt work because nand primitive only accepts 2 inputs lmeow
-    
-    nand (t0, g3, g5);
-    nand (t1, g7, g9);
-    
-    nand (f, t0, t1);
+
+    nand (n3, g3, g3);
+    nand (n5, g5, g5);
+    nand (o0, n3, n5);
+
+    nand (n7, g7, g7);
+    nand (n9, g9, g9);
+    nand (o1, n7, n9);
+   
+    nand (t0, o0, o0);
+    nand (t1, o1, o1);
+    nand (f, t0, t1); 
     
 
 endmodule
